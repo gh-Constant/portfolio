@@ -1,10 +1,13 @@
 import React from 'react'
+import Navigation from './sections/navigation'
+import Main from './sections/Main'
 
 const App = () => {
   return (
-    <main>
-      <h1>Portfolio</h1>
+    <main className='max-w-7xl mx-auto'>
+      <Navigation/>
+      <Main/>
     </main>
   )
 }
-export default App
+export default App  
