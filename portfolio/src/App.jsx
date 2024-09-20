@@ -1,12 +1,13 @@
 import React from 'react'
 import Navigation from './sections/navigation'
-import Main from './sections/Main'
+import Hero from './sections/Hero'
+
 
 const App = () => {
   return (
-    <main className='max-w-7xl mx-auto'>
+    <main className='mx-auto max-w-7xl'>
       <Navigation/>
-      <Main/>
+      <Hero/>
     </main>
   )
 }

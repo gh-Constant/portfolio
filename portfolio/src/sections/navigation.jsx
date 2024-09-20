@@ -22,18 +22,18 @@ const Navigation = () => {
     const toggleMenu = () => setIsOpen((prevIsOpen) => !prevIsOpen) 
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-5 bg-black/90">
-            <div className="max-w-7xl mx-auto">
-                <div className="flex justify-between items-center py-5 mx-auto c-space">
-                    <a href="/" className="text-neutral-400 font-bold text-xl hover:text-white transition-colors">
-                        Constant
+        <header className="fixed top-0 left-0 right-0 z-50 bg-black/90">
+            <div className="mx-auto max-w-7xl">
+                <div className="flex items-center justify-between py-5 mx-auto c-space">
+                    <a href="/" className="text-xl font-bold transition-colors text-neutral-400 hover:text-purple-500">
+                        Portfolio
                     </a>
 
-                    <button onClick={toggleMenu} className="text-neutral-400 hover:text-white focus:outline-none sm:hidden flex" aria-label="Toggle menu">
+                    <button onClick={toggleMenu} className="flex text-neutral-400 hover:text-purple-500 focus:outline-none sm:hidden" aria-label="Toggle menu">
                         <img src={isOpen ? "assets/close.svg" : "assets/menu.svg"} alt="toggle" className="w-6 h-6" />
                     </button> 
 
-                    <nav className="sm:flex hidden">
+                    <nav className="hidden sm:flex ">
                         <NavItems/>
                     </nav>
                 </div>
