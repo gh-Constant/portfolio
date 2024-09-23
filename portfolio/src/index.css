@@ -69,7 +69,7 @@ body {
     @apply mb-2 text-xl font-semibold text-white font-generalsans;
   }
 
-  .grid-subtext {
+  .grid-subtext { 
     @apply text-[#afb0b6] text-base font-generalsans;
   }
 
