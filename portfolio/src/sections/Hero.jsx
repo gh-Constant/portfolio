@@ -5,20 +5,87 @@ import { Suspense } from 'react'
 import CanvasLoader from '../components/CanvasLoader'
 import { HackerRoom } from '../components/HackerRoom'
 import { DirectionalLight } from 'three'
+import { Leva, useControls } from 'leva'
+import { useMediaQuery } from 'react-responsive'
+import { calculateSizes } from '../constants'
 
 const Hero = () => {
+
+    const isMobile = useMediaQuery( {maxWidth: 768} );
+    const isTablet = useMediaQuery( {minWidth: 768, maxWidth: 1024} );
+    const isSmall = useMediaQuery( {maxWidth: 390});
+    
+    const sizes = calculateSizes(isSmall, isMobile, isTablet);
+    
+    const x = useControls
+    ('Model1', {
+        positionX: {
+            value : 2.5,
+            min: -10,
+            max: 10,
+        }  ,
+          
+        positionY: {
+            value : 2.5,
+            min: -10,
+            max: 10,
+        },
+
+        positionZ: {
+            value : 2.5,
+            min: -10,
+            max: 10,
+        },
+
+        rotationX: {
+            value : 0,
+            min: -10,
+            max: 10,
+        },
+
+        rotationY: {
+            value : 0,
+            min: -10,
+            max: 10,
+        },
+
+        rotationZ: {
+            value : 0,
+            min: -10,
+            max: 10,
+        },
+        
+
+        scale : {
+            value : 1,
+            min: 0.1,
+            max: 10,
+            
+        },
+        })
+
     return (
         <section className="relative flex flex-col w-full min-h-screen"> 
             <div className="flex flex-col w-full gap-3 mx-auto mt-20 sm:mt-36 c-space">
                 <p className="text-xl font-medium text-center text-white sm:text-3xl font-generalsans">Arial Ipsum<span className="ml-3 waving-hand"> 👋</span></p>
 
                 <p className="hero_tag text-gray_gradient">Arial Ipsum & Selecto placto</p>
-
+            <Leva/> 
                 <Canvas className="absolute inset-0 w-full h-full">
                     <Suspense fallback={<CanvasLoader/>}>
                         <PerspectiveCamera makeDefault position={[0,0,30]}/>
-                        <Model1 scale='1.25' position={[5,0,0]} rotation={[0, 0, 0]}   />
-                            
+                        
+                        <Model1 
+                            position={sizes.arPosition} 
+                            rotation={[-6.6, -6.4, 0.0]}
+                            scale={sizes.arSize}        
+                           // position={[x.positionX, x.positionY, x.positionZ]}
+                           // rotation={[x.rotationX, x.rotationY, x.rotationZ]}  
+                           // scale={[x.scale, x.scale, x.scale]}
+                        />
+
+                        
+                        
                         <ambientLight intensity={5} />
 
                         <directionalLight intensity={50} position={[0, 10, 10]} />
