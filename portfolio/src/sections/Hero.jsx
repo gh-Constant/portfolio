@@ -102,7 +102,11 @@ const Hero = () => {
                 
             </div>
 
-            
+            <div className="relative bottom-0 left-0 right-0 flex justify-center w-full">
+                <h1 className="text-2xl text-center text-white font-generalsans">Scroll down</h1>
+                
+                <h1 className="text-2xl text-center text-white font-generalsans mt-80">👇</h1>
+            </div>
         </section>
     )
 }

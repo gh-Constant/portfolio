@@ -6,14 +6,27 @@ Source: https://sketchfab.com/3d-models/rk-62-m2-53120de9648d4828915927ed35abadf
 Title: RK-62 M2
 */
 
-import React from 'react'
-import { useGLTF } from '@react-three/drei'
+import React, { useRef } from 'react'
+import { RandomizedLight,Float, useGLTF } from '@react-three/drei'
+import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
-export function Model1  (props){
+const Model1 = (props) => {
+  const modelRef = useRef();
   const { nodes, materials } = useGLTF('/models/rk.glb')
+
+ // useGSAP( () => {
+   // gsap.to(modelRef.current.position, {
+     // y: modelRef.current.position.y + 0.5,
+      //duration: 1,
+      //yoyo: true,
+      //repeat: -1,
+    //});
+  //});
+
   return (
-    <group {...props} dispose={null}>
-      <group rotation={[-Math.PI / 2, 0, 0]}>
+    <Float dispose={null}>
+      <group rotation={[-Math.PI / 2, 0, 0]} {...props}>
         <mesh
           castShadow
           receiveShadow
@@ -39,7 +52,7 @@ export function Model1  (props){
           material={materials.stock}
         />
       </group>
-    </group>
+    </Float>
   )
 }
 
