@@ -3,11 +3,10 @@ import { Canvas } from '@react-three/fiber'
 import Model1 from '../components/Model1'
 import { Suspense } from 'react'
 import CanvasLoader from '../components/CanvasLoader'
-import { HackerRoom } from '../components/HackerRoom'
-import { DirectionalLight } from 'three'
 import { Leva, useControls } from 'leva'
 import { useMediaQuery } from 'react-responsive'
 import { calculateSizes } from '../constants'
+import Target from '../components/Target'
 
 const Hero = () => {
 
@@ -84,7 +83,10 @@ const Hero = () => {
                            // scale={[x.scale, x.scale, x.scale]}
                         />
 
-                        
+                        <group>
+                            <Target position={[16,-5,10]} scale={2} />
+                      
+                        </group>
                         
                         <ambientLight intensity={5} />
 
