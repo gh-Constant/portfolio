@@ -63,12 +63,14 @@ const Hero = () => {
         },
         })
 
+        //test
+
     return (
         <section className="relative flex flex-col w-full min-h-screen"> 
             <div className="flex flex-col w-full gap-3 mx-auto mt-20 sm:mt-36 c-space">
                 <p className="text-xl font-medium text-center text-white sm:text-3xl font-generalsans">Arial Ipsum<span className="ml-3 waving-hand"> 👋</span></p>
 
-                <p className="hero_tag text-gray_gradient">Arial Ipsum & Selecto placto</p>
+                <p className="hero_tag text-gray_gradient">Teste de commit</p>
             <Leva/> 
                 <Canvas className="absolute inset-0 w-full h-full">
                     <Suspense fallback={<CanvasLoader/>}>
@@ -84,8 +86,9 @@ const Hero = () => {
                         />
 
                         <group>
-                            <Target position={[16,-5,10]} scale={2} />
-                      
+                            <Target position={[16,-5,10]} scale={2} /> 
+                        
+                            
                         </group>
                         
                         <ambientLight intensity={5} />
@@ -94,6 +97,9 @@ const Hero = () => {
 
                     </Suspense>
                 </Canvas>
+
+
+                
             </div>
 
             
