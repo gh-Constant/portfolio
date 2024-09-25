@@ -73,12 +73,12 @@ const Hero = () => {
 
                 <p className="hero_tag text-gray_gradient">Teste de commit</p>
             <Leva/> 
-                <Canvas className="absolute inset-0 w-full h-full">
+                <Canvas className="absolute inset-0 w-full h-full mb-7">
                     <Suspense fallback={<CanvasLoader/>}>
                         <PerspectiveCamera makeDefault position={[0,0,30]}/>
                         
                         <Model1 
-                            position={sizes.arPosition} 
+                            position={sizes.arPosition} z
                             rotation={[-6.6, -6.4, 0.0]}
                             scale={sizes.arSize}        
                            // position={[x.positionX, x.positionY, x.positionZ]}
@@ -94,7 +94,7 @@ const Hero = () => {
                 </Canvas>
             </div>
 
-            <div className='absolute left-0 right-0 z-10 w-full bottom-7 c-space'>
+            <div className='absolute bottom-0 left-0 right-0 z-10 w-full c-space'>
                 <a href="#contact" className='w-fit'>
                     <Button name="Let's work together" isBeam containerClass="sm:w-fit w-full sm:min-w-96"/>
                 </a>
