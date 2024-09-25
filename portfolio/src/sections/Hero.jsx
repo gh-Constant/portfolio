@@ -7,6 +7,7 @@ import { Leva, useControls } from 'leva'
 import { useMediaQuery } from 'react-responsive'
 import { calculateSizes } from '../constants'
 import Target from '../components/Target'
+import Button from '../components/Button'
 
 const Hero = () => {
 
@@ -91,9 +92,12 @@ const Hero = () => {
 
                     </Suspense>
                 </Canvas>
+            </div>
 
-
-                
+            <div className='absolute left-0 right-0 z-10 w-full bottom-7 c-space'>
+                <a href="#contact" className='w-fit'>
+                    <Button name="Let's work together" isBeam containerClass="sm:w-fit w-full sm:min-w-96"/>
+                </a>
             </div>
         </section>
     )
