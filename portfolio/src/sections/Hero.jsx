@@ -84,12 +84,6 @@ const Hero = () => {
                            // rotation={[x.rotationX, x.rotationY, x.rotationZ]}  
                            // scale={[x.scale, x.scale, x.scale]}
                         />
-
-                        <group>
-                            <Target position={[16,-5,10]} scale={2} /> 
-                        
-                            
-                        </group>
                         
                         <ambientLight intensity={5} />
 
@@ -100,12 +94,6 @@ const Hero = () => {
 
 
                 
-            </div>
-
-            <div className="relative bottom-0 left-0 right-0 flex justify-center w-full">
-                <h1 className="text-2xl text-center text-white font-generalsans">Scroll down</h1>
-                
-                <h1 className="text-2xl text-center text-white font-generalsans mt-80">👇</h1>
             </div>
         </section>
     )
