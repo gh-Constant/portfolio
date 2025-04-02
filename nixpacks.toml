@@ -5,7 +5,7 @@ nixPkgs = ["nodejs_18", "bun"]
 
 # Override the default install command
 [phases.install]
-cmds = ["bun install --frozen-lockfile"] # Use bun install with the lockfile
+cmds = ["bun install"] # Use bun install with the lockfile
 
 # Ensure the build command uses bun (Nixpacks detected this correctly, but explicit is better)
 [phases.build]
