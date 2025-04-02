@@ -5,7 +5,7 @@ FROM node:18-alpine AS base
 WORKDIR /app
 
 # Copy package.json and lock file
-COPY package*.json bun.lockb ./
+COPY package*.json bun.lock ./
 
 # Install Bun globally
 RUN npm install -g bun
