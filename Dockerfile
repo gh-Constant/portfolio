@@ -5,16 +5,19 @@ FROM node:18-alpine AS base
 WORKDIR /app
 
 # Copy package.json and lock file
-COPY package*.json ./
+COPY package*.json bun.lockb ./
 
-# Install dependencies using npm (adjust if using yarn or pnpm)
-RUN npm install
+# Install Bun globally
+RUN npm install -g bun
+
+# Install dependencies using bun
+RUN bun install --frozen-lockfile # Use --frozen-lockfile for reproducibility
 
 # Copy the rest of the application code
 COPY . .
 
-# Build the Nuxt application for production
-RUN npm run build
+# Build the Nuxt application for production using bun
+RUN bun run build
 
 # --- Production Stage ---
 FROM node:18-alpine
