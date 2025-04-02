@@ -28,11 +28,13 @@ COPY --from=base /app/package.json ./package.json
 
 # Set environment variables for production
 ENV NODE_ENV=production
-ENV NUXT_HOST=0.0.0.0 # Listen on all interfaces within the container
-ENV NUXT_PORT=3000    # Default Nuxt port
+# Listen on all interfaces within the container
+ENV NUXT_HOST=0.0.0.0
+# Default Nuxt port
+ENV NUXT_PORT=7000
 
 # Expose the port the app runs on
-EXPOSE 3000
+EXPOSE 7000
 
 # Command to run the application
 CMD ["node", ".output/server/index.mjs"] 
