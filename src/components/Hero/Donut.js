@@ -12,22 +12,26 @@ export default function Model() {
         torus.current.rotation.x += 0.02
     })
 
-    const materialProps = useControls({
+    const layoutProps = useControls('Layout', {
+        heroScale: { value: viewport.width, min: 0.5, max: 25, step: 0.1 },
+        donutScale: { value: 1 / 3.75, min: 0.05, max: 1, step: 0.01 }
+    })
+
+    const materialProps = useControls('Material', {
         thickness: { value: 0.2, min: 0, max: 3, step: 0.05 },
         roughness: { value: 0, min: 0, max: 1, step: 0.1 },
         transmission: {value: 1, min: 0, max: 1, step: 0.1},
         ior: { value: 1.2, min: 0, max: 3, step: 0.1 },
         chromaticAberration: { value: 0.02, min: 0, max: 1},
         backside: { value: true},
-        size: { value: 1, min: 0.1, max: 2, step: 0.1 }
     })
     
     return (
-        <group scale={viewport.width / 3.75} >
+        <group scale={layoutProps.heroScale} >
             <Text font={'/fonts/PPNeueMontreal-Bold.otf'} position={[0, 0, -1]} fontSize={0.5} color="white" anchorX="center" anchorY="middle">
                 hello world!
             </Text>
-            <mesh ref={torus} {...nodes.Torus002} scale={materialProps.size}>
+            <mesh ref={torus} {...nodes.Torus002} scale={layoutProps.donutScale}>
                 <MeshTransmissionMaterial {...materialProps}/>
             </mesh>
         </group>
