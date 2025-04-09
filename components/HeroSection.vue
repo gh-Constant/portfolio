@@ -1,13 +1,16 @@
 <template>
   <section class="hero-section relative w-full min-h-screen overflow-hidden">
     <!-- Interactive Background with Three.js -->
-    <div class="hero-section__background absolute inset-0">
+    <div class="hero-section__background absolute inset-0 z-0">
       <canvas 
         ref="canvas" 
         class="interactive-background__canvas absolute inset-0 w-full h-full" 
         data-engine="three.js r155"
       ></canvas>
     </div>
+
+    <!-- Tailwind Grid Overlay -->
+    <div class="absolute inset-0 z-10 bg-[url('/grid.svg')] bg-repeat opacity-10 invert"></div>
     
     <!-- Content Container -->
     <div class="relative z-20 container mx-auto px-4 h-screen flex items-center justify-center">
@@ -63,7 +66,6 @@ const canvas = ref(null);
 
 // Three.js variables
 let scene, camera, renderer, uniforms, animationFrameId;
-let gridMesh;
 
 // Initialize Three.js scene
 const initThree = () => {
@@ -157,22 +159,6 @@ const initThree = () => {
     const geometry = new THREE.PlaneGeometry(2, 2);
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
-
-    // Load and add grid
-    const textureLoader = new THREE.TextureLoader();
-    textureLoader.load('/grid.svg', (texture) => {
-      const gridGeometry = new THREE.PlaneGeometry(2, 2);
-      const gridMaterial = new THREE.MeshBasicMaterial({
-        map: texture,
-        transparent: true,
-        opacity: 0.1,
-        blending: THREE.AdditiveBlending
-      });
-      
-      gridMesh = new THREE.Mesh(gridGeometry, gridMaterial);
-      gridMesh.position.z = 0.1; // Place slightly in front of the gradient
-      scene.add(gridMesh);
-    });
     
     window.addEventListener('resize', onResize);
     animate();
@@ -184,13 +170,6 @@ const initThree = () => {
 // Animation loop
 const animate = () => {
   uniforms.u_time.value += 0.015;
-  
-  if (gridMesh) {
-    const mouseX = uniforms.u_mouse.value.x - 0.5;
-    const mouseY = uniforms.u_mouse.value.y - 0.5;
-    gridMesh.position.x = mouseX * 0.1;
-    gridMesh.position.y = mouseY * 0.1;
-  }
   
   renderer.render(scene, camera);
   animationFrameId = requestAnimationFrame(animate);
@@ -267,7 +246,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 0;
 }
 
 .interactive-background__canvas {
