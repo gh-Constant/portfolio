@@ -1,103 +1,76 @@
 <template>
-  <div>
-    <LoadingScreen 
-      :is-loaded="isLoaded" 
-      @complete="onLoadingComplete"
-    />
+  <section class="hero-section relative w-full min-h-screen overflow-hidden">
+    <!-- Interactive Background with Three.js -->
+    <div class="hero-section__background absolute inset-0">
+      <canvas 
+        ref="canvas" 
+        class="interactive-background__canvas absolute inset-0 w-full h-full" 
+        data-engine="three.js r155"
+      ></canvas>
+    </div>
     
-    <section 
-      v-show="showContent" 
-      class="hero-section relative w-full min-h-screen overflow-hidden"
-    >
-      <!-- Interactive Background with Three.js -->
-      <div class="hero-section__background absolute inset-0 z-1">
-        <canvas 
-          ref="canvas" 
-          class="interactive-background__canvas absolute inset-0 w-full h-full" 
-          data-engine="three.js r155"
-        ></canvas>
-      </div>
-      
-      <!-- Add the Grid Image Here -->
-      <img 
-        src="/grid.svg" 
-        alt="Background grid pattern" 
-        class="absolute inset-0 w-full h-full object-cover z-10 opacity-10 invert  pointer-events-none" 
-      />
-      
-      <!-- Content Container -->
-      <div class="relative z-20 container mx-auto px-4 h-screen flex items-center justify-center">
-        <div class="text-center max-w-6xl mx-auto">
-          <!-- Logo/Name -->
-          <div class="mb-8">
-            <h3 class="text-3xl md:text-4xl font-light text-white/90 tracking-wider"> 
-              Constant SUCHET
-            </h3>
-          </div>
-          
-          <!-- Main Heading -->
-          <div class="mb-12">
-            <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white/95 leading-tight">
-              <span class="block">Student</span>
-              <span class="block">Developer</span>
-            </h1>
-          </div>
-          
-          <!-- Subheading -->
-          <div class="mb-12">
-            <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto">
-              Passionate about learning and building for the web. Welcome to my portfolio.
-            </p>
-          </div>
-          
-          <!-- CTA Button -->
-          <div>
-            <button class="px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full border-2 border-white/90 text-white/90 hover:bg-white/10 transition-colors duration-300">
-              View My Work
-            </button>
-          </div>
+    <!-- Content Container -->
+    <div class="relative z-20 container mx-auto px-4 h-screen flex items-center justify-center">
+      <div class="text-center max-w-6xl mx-auto">
+        <!-- Logo -->
+        <div class="mb-8">
+          <h3 class="text-3xl md:text-4xl font-light text-white/90">vectors</h3>
+        </div>
+        
+        <!-- Main Heading -->
+        <div class="mb-12">
+          <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white/95 leading-tight">
+            <span class="block">Human.</span>
+            <span class="block">Strategic.</span>
+            <span class="block">Technological.</span>
+          </h1>
+        </div>
+        
+        <!-- Subheading -->
+        <div class="mb-12">
+          <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto">
+            Strategic Communications with a Technological and International DNA.
+          </p>
+        </div>
+        
+        <!-- CTA Button -->
+        <div>
+          <button class="px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full border-2 border-white/90 text-white/90 hover:bg-white/10 transition-colors duration-300">
+            Contact us
+          </button>
         </div>
       </div>
-      
-      <!-- Menu Button -->
-      <div class="absolute top-4 sm:top-6 md:top-8 right-4 sm:right-6 md:right-8 z-30 flex items-center">
-        <button class="hidden sm:block px-6 md:px-8 py-2 md:py-3 rounded-full border-2 border-white/90 text-white/90 hover:bg-white/10 transition-colors duration-300 mr-4">
-          Contact Me
-        </button>
-        <button class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white/90 flex items-center justify-center text-white/90 hover:bg-white/10 transition-colors duration-300">
-          <span class="sr-only">Menu</span>
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-        </button>
-      </div>
-    </section>
-  </div>
+    </div>
+    
+    <!-- Menu Button -->
+    <div class="absolute top-4 sm:top-6 md:top-8 right-4 sm:right-6 md:right-8 z-30 flex items-center">
+      <button class="hidden sm:block px-6 md:px-8 py-2 md:py-3 rounded-full border-2 border-white/90 text-white/90 hover:bg-white/10 transition-colors duration-300 mr-4">
+        Contact us
+      </button>
+      <button class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white/90 flex items-center justify-center text-white/90 hover:bg-white/10 transition-colors duration-300">
+        <span class="sr-only">Menu</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
+    </div>
+  </section>
 </template>
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
-import LoadingScreen from './LoadingScreen.vue';
 
 // Canvas reference
 const canvas = ref(null);
-const isLoaded = ref(false);
-const showContent = ref(false);
 
 // Three.js variables
 let scene, camera, renderer, uniforms, animationFrameId;
-
-// Handle loading complete
-const onLoadingComplete = () => {
-  showContent.value = true;
-};
+let gridMesh;
 
 // Initialize Three.js scene
-const initThree = async () => {
+const initThree = () => {
   if (!canvas.value) return;
   
-  try {
-    // Import Three.js dynamically (for Nuxt compatibility)
-    const THREE = await import('three');
-    
+  // Import Three.js dynamically (for Nuxt compatibility)
+  import('three').then((THREE) => {
     // Set up renderer
     renderer = new THREE.WebGLRenderer({ 
       canvas: canvas.value,
@@ -184,21 +157,40 @@ const initThree = async () => {
     const geometry = new THREE.PlaneGeometry(2, 2);
     const mesh = new THREE.Mesh(geometry, material);
     scene.add(mesh);
+
+    // Load and add grid
+    const textureLoader = new THREE.TextureLoader();
+    textureLoader.load('/grid.svg', (texture) => {
+      const gridGeometry = new THREE.PlaneGeometry(2, 2);
+      const gridMaterial = new THREE.MeshBasicMaterial({
+        map: texture,
+        transparent: true,
+        opacity: 0.1,
+        blending: THREE.AdditiveBlending
+      });
+      
+      gridMesh = new THREE.Mesh(gridGeometry, gridMaterial);
+      gridMesh.position.z = 0.1; // Place slightly in front of the gradient
+      scene.add(gridMesh);
+    });
     
     window.addEventListener('resize', onResize);
     animate();
-    
-    // Mark as loaded when everything is initialized
-    isLoaded.value = true;
-    
-  } catch (error) {
+  }).catch(error => {
     console.error('Failed to load Three.js:', error);
-  }
+  });
 };
 
 // Animation loop
 const animate = () => {
   uniforms.u_time.value += 0.015;
+  
+  if (gridMesh) {
+    const mouseX = uniforms.u_mouse.value.x - 0.5;
+    const mouseY = uniforms.u_mouse.value.y - 0.5;
+    gridMesh.position.x = mouseX * 0.1;
+    gridMesh.position.y = mouseY * 0.1;
+  }
   
   renderer.render(scene, camera);
   animationFrameId = requestAnimationFrame(animate);
@@ -275,6 +267,7 @@ onUnmounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
 .interactive-background__canvas {
