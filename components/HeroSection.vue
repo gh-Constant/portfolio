@@ -60,9 +60,11 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue';
+import { useNuxtApp } from '#app';
 
 // Canvas reference
 const canvas = ref(null);
+const { $loading } = useNuxtApp();
 
 // Three.js variables
 let scene, camera, renderer, uniforms, animationFrameId;
@@ -162,8 +164,13 @@ const initThree = () => {
     
     window.addEventListener('resize', onResize);
     animate();
+    
+    // Finish loading when Three.js is ready
+    $loading?.finish?.();
   }).catch(error => {
     console.error('Failed to load Three.js:', error);
+    // Still finish loading on error to prevent blocking
+    $loading?.finish?.();
   });
 };
 

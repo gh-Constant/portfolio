@@ -143,7 +143,17 @@
 </template>
 
 <script setup>
-// Component logic can be added here if needed
+import { onMounted } from 'vue';
+import { useNuxtApp } from '#app';
+
+const { $loading } = useNuxtApp();
+
+onMounted(() => {
+  // Simple timeout to ensure images have a chance to load
+  setTimeout(() => {
+    $loading?.finish?.();
+  }, 1000);
+});
 </script>
 
 <style scoped>
