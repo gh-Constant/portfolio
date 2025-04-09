@@ -165,12 +165,12 @@ const initThree = () => {
     window.addEventListener('resize', onResize);
     animate();
     
-    // Finish loading when Three.js is ready
-    $loading?.finish?.();
+    // Signal that Three.js is ready
+    $loading.componentLoaded('HeroSection');
   }).catch(error => {
     console.error('Failed to load Three.js:', error);
-    // Still finish loading on error to prevent blocking
-    $loading?.finish?.();
+    // Still mark component as loaded on error
+    $loading.componentLoaded('HeroSection');
   });
 };
 
@@ -212,6 +212,7 @@ const onMouseLeave = () => {
 
 // Lifecycle hooks
 onMounted(() => {
+  $loading.registerComponent('HeroSection');
   initThree();
   window.addEventListener('mousemove', onMouseMove);
   window.addEventListener('mouseleave', onMouseLeave);

@@ -149,10 +149,8 @@ import { useNuxtApp } from '#app';
 const { $loading } = useNuxtApp();
 
 onMounted(() => {
-  // Simple timeout to ensure images have a chance to load
-  setTimeout(() => {
-    $loading?.finish?.();
-  }, 1000);
+  $loading.registerComponent('PortfolioSection');
+  $loading.componentLoaded('PortfolioSection');
 });
 </script>
 
