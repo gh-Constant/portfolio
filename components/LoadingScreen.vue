@@ -3,12 +3,14 @@
     :class="['fixed inset-0 z-50 flex flex-col items-center justify-center bg-black transition-opacity duration-500', 
             { 'opacity-0 pointer-events-none': !isVisible }]"
   >
-    <div class="text-center typewriter">
+    <!-- Only show typewriter text if showAnimationContent is true -->
+    <div v-if="showAnimationContent" class="text-center typewriter">
       <h1 class="text-white text-2xl md:text-4xl font-light mb-4 first-line">Hi, I'm Constant.</h1>
       <h1 class="text-white text-2xl md:text-4xl font-light delayed-typing">Welcome to my portfolio</h1>
     </div>
+    <!-- Only show loading dots if showAnimationContent is true, after animations -->
     <div 
-      v-if="showLoadingDots" 
+      v-if="showAnimationContent && showLoadingDots" 
       class="text-white mt-8 text-xl loading-dots"
     >
       Loading<span>.</span><span>.</span><span>.</span>
@@ -19,22 +21,32 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-defineProps({
+const props = defineProps({
   isVisible: {
     type: Boolean,
     default: true
+  },
+  // Renamed prop
+  showAnimationContent: {
+    type: Boolean,
+    default: false // Default to false (black screen) unless told otherwise
   }
 });
 
 const showLoadingDots = ref(false);
 
 onMounted(() => {
-  console.log('LoadingScreen mounted, starting typing animations...');
-  // Show loading dots after typing animations (4s)
-  setTimeout(() => {
-    console.log('Typing animations complete, showing loading dots');
-    showLoadingDots.value = true;
-  }, 4000);
+  // Only run animation/dots logic if content should be shown
+  if (props.showAnimationContent) {
+    console.log('LoadingScreen mounted, animation content requested.');
+    // Show loading dots after typing animations (0.5s delay + 2s line1 + 2s line2 = 4.5s)
+    setTimeout(() => {
+      console.log('Typing animations complete, showing loading dots');
+      showLoadingDots.value = true;
+    }, 4500);
+  } else {
+    console.log('LoadingScreen mounted, animation content NOT requested (showing black screen).');
+  }
 });
 </script>
 
@@ -50,8 +62,8 @@ onMounted(() => {
 .typewriter h1.first-line {
   width: 0;
   animation: 
-    typing 2s steps(40, end) forwards,
-    firstLineCursor 2s steps(1) forwards;
+    typing 2s steps(40, end) 0.5s forwards,
+    firstLineCursor 2s steps(1) 0.5s forwards;
 }
 
 .typewriter h1.first-line.typed {
@@ -62,9 +74,9 @@ onMounted(() => {
   width: 0;
   opacity: 0;
   animation: 
-    typing 2s steps(40, end) 2s forwards,
-    secondLineCursor 2s steps(1) 2s forwards,
-    showLine 0s 2s forwards;
+    typing 2s steps(40, end) 2.5s forwards,
+    secondLineCursor 2s steps(1) 2.5s forwards,
+    showLine 0s 2.5s forwards;
 }
 
 @keyframes typing {

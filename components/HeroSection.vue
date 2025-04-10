@@ -212,7 +212,8 @@ const onMouseLeave = () => {
 
 // Lifecycle hooks
 onMounted(() => {
-  $loading.registerComponent('HeroSection');
+  // Registration is now handled in pages/index.vue
+  // $loading.registerComponent('HeroSection'); 
   initThree();
   window.addEventListener('mousemove', onMouseMove);
   window.addEventListener('mouseleave', onMouseLeave);

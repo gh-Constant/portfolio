@@ -149,7 +149,9 @@ import { useNuxtApp } from '#app';
 const { $loading } = useNuxtApp();
 
 onMounted(() => {
-  $loading.registerComponent('PortfolioSection');
+  // Registration is now handled in pages/index.vue
+  // $loading.registerComponent('PortfolioSection');
+  console.log('PortfolioSection loaded and reporting to loading plugin.')
   $loading.componentLoaded('PortfolioSection');
 });
 </script>
