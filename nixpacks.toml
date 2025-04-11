@@ -11,7 +11,7 @@ nixPkgs = ["...", "pnpm"] # "..." preserves existing Nix packages
 
 [phases.install]
 # Install dependencies using pnpm, respecting the lockfile
-command = "pnpm install --frozen-lockfile"
+command = "npm install -g pnpm && pnpm install --frozen-lockfile"
 
 [phases.build]
 # Run the build command defined in your package.json (usually 'nuxt build')
