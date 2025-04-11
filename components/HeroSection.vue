@@ -17,30 +17,24 @@
       <div class="text-center max-w-6xl mx-auto">
         <!-- Logo -->
         <div class="mb-8">
-          <h3 class="text-3xl md:text-4xl font-light text-white/90">vectors</h3>
+          <h3 class="text-3xl md:text-4xl font-light text-white/90">
+            Based in France
+          </h3>
         </div>
         
         <!-- Main Heading -->
         <div class="mb-12">
-          <h1 class="text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl font-bold text-white/95 leading-tight">
-            <span class="block">Human.</span>
-            <span class="block">Strategic.</span>
-            <span class="block">Technological.</span>
+          <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold text-white/95 leading-none">
+            <span class="block">CONSTANT</span>
+            <span class="block">PORTFOLIO</span>
           </h1>
         </div>
         
         <!-- Subheading -->
         <div class="mb-12">
           <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto">
-            Strategic Communications with a Technological and International DNA.
+            Exploring the intersection of design and technology. Browse my latest projects and experiments.
           </p>
-        </div>
-        
-        <!-- CTA Button -->
-        <div>
-          <button class="px-6 sm:px-8 md:px-10 py-3 sm:py-4 text-base sm:text-lg rounded-full border-2 border-white/90 text-white/90 hover:bg-white/10 transition-colors duration-300">
-            Contact us
-          </button>
         </div>
       </div>
     </div>
@@ -48,7 +42,7 @@
     <!-- Menu Button -->
     <div class="absolute top-4 sm:top-6 md:top-8 right-4 sm:right-6 md:right-8 z-30 flex items-center">
       <button class="hidden sm:block px-6 md:px-8 py-2 md:py-3 rounded-full border-2 border-white/90 text-white/90 hover:bg-white/10 transition-colors duration-300 mr-4">
-        Contact us
+        Get In Touch
       </button>
       <button class="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-white/90 flex items-center justify-center text-white/90 hover:bg-white/10 transition-colors duration-300">
         <span class="sr-only">Menu</span>
@@ -239,6 +233,63 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
+/* Add Font Face Rules */
+@font-face {
+  font-family: 'HK Grotesk Wide';
+  src: url('/fonts/HKGroteskWide-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HK Grotesk Wide';
+  src: url('/fonts/HKGroteskWide-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HK Grotesk Wide';
+  src: url('/fonts/HKGroteskWide-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HK Grotesk Wide';
+  src: url('/fonts/HKGroteskWide-SemiBold.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HK Grotesk Wide';
+  src: url('/fonts/HKGroteskWide-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HK Grotesk Wide';
+  src: url('/fonts/HKGroteskWide-ExtraBold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'HK Grotesk Wide';
+  src: url('/fonts/HKGroteskWide-Black.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Dirtyline';
+  src: url('/fonts/Dirtyline 36daysoftype 2022.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .hero-section {
   position: relative;
   width: 100%;
@@ -247,6 +298,34 @@ onUnmounted(() => {
   display: flex;
   align-items: center;
   background-color: black; /* Fallback color */
+  /* Apply base font */
+  font-family: 'HK Grotesk Wide', sans-serif; 
+}
+
+/* Apply Specific Fonts and Weights */
+h3 {
+  font-family: 'HK Grotesk Wide', sans-serif;
+  font-weight: 300; /* Light */
+}
+
+h1 {
+  /* Option 1: HK Grotesk Wide Bold/ExtraBold */
+  font-family: 'HK Grotesk Wide', sans-serif; 
+  font-weight: 800; /* ExtraBold */
+
+  /* Option 2: Dirtyline (Uncomment to try) */
+  /* font-family: 'Dirtyline', cursive; */
+  /* font-weight: normal; */
+}
+
+p {
+  font-family: 'HK Grotesk Wide', sans-serif;
+  font-weight: 400; /* Regular */
+}
+
+button {
+  font-family: 'HK Grotesk Wide', sans-serif;
+  font-weight: 600; /* SemiBold */
 }
 
 .hero-section__background {
