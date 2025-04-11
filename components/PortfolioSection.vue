@@ -1,10 +1,10 @@
 <template>
-  <section class="portfolio-section py-24 bg-gradient-to-b from-black to-gray-900">
-    <div class="container mx-auto px-4">
-      <!-- Section Header -->
+  <section class="portfolio-section py-24">
+    <div class="container mx-auto px-4 pt-12">
+      <!-- Section Header with staggered animation -->
       <div class="text-center mb-16">
-        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Our Work</h2>
-        <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+        <h2 class="text-4xl md:text-5xl font-bold text-white mb-6 opacity-0 animate-slide-up">Our Work</h2>
+        <p class="text-xl text-gray-400 max-w-2xl mx-auto opacity-0 animate-slide-up-delayed">
           Transforming ideas into digital experiences that leave lasting impressions.
         </p>
       </div>
@@ -160,6 +160,28 @@ onMounted(() => {
 .portfolio-section {
   position: relative;
   z-index: 10;
+  min-height: 100vh;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.8s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+
+.animate-slide-up-delayed {
+  animation: slideUp 0.8s cubic-bezier(0.33, 1, 0.68, 1) 0.2s forwards;
 }
 
 .aspect-w-16.aspect-h-9 {

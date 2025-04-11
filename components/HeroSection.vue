@@ -14,7 +14,7 @@
     
     <!-- Content Container -->
     <div class="relative z-20 container mx-auto px-4 h-screen flex items-center justify-center">
-      <div class="text-center max-w-6xl mx-auto">
+      <div class="text-center max-w-[90vw] mx-auto">
         <!-- Logo -->
         <div class="mb-8">
           <h3 class="text-3xl md:text-4xl font-light text-white/90">
@@ -24,9 +24,9 @@
         
         <!-- Main Heading -->
         <div class="mb-12">
-          <h1 class="text-6xl sm:text-7xl md:text-8xl lg:text-9xl xl:text-[10rem] font-bold text-white/95 leading-none">
-            <span class="block">CONSTANT</span>
-            <span class="block">PORTFOLIO</span>
+          <h1 class="text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[16rem] 2xl:text-[20rem] font-normal text-white/95 leading-[0.9]">
+            <span class="block">Constant</span>
+            <span class="block">Suchet</span>
           </h1>
         </div>
         
@@ -206,8 +206,6 @@ const onMouseLeave = () => {
 
 // Lifecycle hooks
 onMounted(() => {
-  // Registration is now handled in pages/index.vue
-  // $loading.registerComponent('HeroSection'); 
   initThree();
   window.addEventListener('mousemove', onMouseMove);
   window.addEventListener('mouseleave', onMouseLeave);
@@ -234,6 +232,14 @@ onUnmounted(() => {
 
 <style scoped>
 /* Add Font Face Rules */
+@font-face {
+  font-family: 'Rolest';
+  src: url('/fonts/Rolest.otf') format('opentype'),
+       url('/fonts/Rolest.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'HK Grotesk Wide';
   src: url('/fonts/HKGroteskWide-Light.otf') format('opentype');
@@ -262,34 +268,6 @@ onUnmounted(() => {
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'HK Grotesk Wide';
-  src: url('/fonts/HKGroteskWide-Bold.otf') format('opentype');
-  font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'HK Grotesk Wide';
-  src: url('/fonts/HKGroteskWide-ExtraBold.otf') format('opentype');
-  font-weight: 800;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'HK Grotesk Wide';
-  src: url('/fonts/HKGroteskWide-Black.otf') format('opentype');
-  font-weight: 900;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'Dirtyline';
-  src: url('/fonts/Dirtyline 36daysoftype 2022.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
-
 .hero-section {
   position: relative;
   width: 100%;
@@ -306,16 +284,13 @@ onUnmounted(() => {
 h3 {
   font-family: 'HK Grotesk Wide', sans-serif;
   font-weight: 300; /* Light */
+  letter-spacing: 0.1em;
 }
 
 h1 {
-  /* Option 1: HK Grotesk Wide Bold/ExtraBold */
-  font-family: 'HK Grotesk Wide', sans-serif; 
-  font-weight: 800; /* ExtraBold */
-
-  /* Option 2: Dirtyline (Uncomment to try) */
-  /* font-family: 'Dirtyline', cursive; */
-  /* font-weight: normal; */
+  font-family: 'Rolest', serif;
+  font-weight: normal;
+  letter-spacing: 0.02em;
 }
 
 p {
@@ -359,10 +334,6 @@ h1 span:nth-child(1) {
 
 h1 span:nth-child(2) {
   animation-delay: 0.15s;
-}
-
-h1 span:nth-child(3) {
-  animation-delay: 0.25s;
 }
 
 @keyframes fadeInUp {
