@@ -41,6 +41,9 @@ importers:
       '@unhead/vue':
         specifier: ^2.0.0-rc.8
         version: 2.0.5(vue@3.5.13(typescript@5.8.3))
+      baffle:
+        specifier: ^0.3.6
+        version: 0.3.6
       eslint:
         specifier: ^9.0.0
         version: 9.24.0(jiti@2.4.2)
@@ -1654,6 +1657,9 @@ packages:
 
   b4a@1.6.7:
     resolution: {integrity: sha512-OnAYlL5b7LEkALw87fUVafQw5rVR9RjwGd4KUwNQ6DrrNmaVaUCgLipfVlzrPQ4tWOR9P0IXGNOx50jYCCdSJg==}
+
+  baffle@0.3.6:
+    resolution: {integrity: sha512-EAae8dURqcjcuQOXdU69vvLX50NobtFyPwhCZGd40sz220E+4b47X8I24Uuj44bYoIY7ieNdgrtvhFdZM5/qag==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -6708,6 +6714,8 @@ snapshots:
       postcss-value-parser: 4.2.0
 
   b4a@1.6.7: {}
+
+  baffle@0.3.6: {}
 
   balanced-match@1.0.2: {}
 
