@@ -15,16 +15,16 @@
     <!-- Content Container -->
     <div class="relative z-20 container mx-auto px-4 h-screen flex items-center justify-center">
       <div class="text-center max-w-[90vw] mx-auto">
-        <!-- Logo -->
-        <div class="mb-8">
-          <h3 class="text-3xl md:text-4xl font-light text-white/90">
+        <!-- Based in France -->
+        <div class="mb-6">
+          <h3 class="text-xl sm:text-2xl font-normal text-white/90 font-pixels uppercase tracking-wide">
             Based in France
           </h3>
         </div>
         
         <!-- Main Heading -->
         <div class="mb-12">
-          <h1 class="text-7xl sm:text-8xl md:text-9xl lg:text-[12rem] xl:text-[16rem] 2xl:text-[20rem] font-normal text-white/95 leading-[0.9]">
+          <h1 class="text-[5rem] sm:text-[8rem] md:text-[12rem] lg:text-[16rem] xl:text-[20rem] font-normal text-white leading-[0.9] font-fade">
             <span class="block">Constant</span>
             <span class="block">Suchet</span>
           </h1>
@@ -32,7 +32,7 @@
         
         <!-- Subheading -->
         <div class="mb-12">
-          <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto">
+          <p class="text-lg sm:text-xl md:text-2xl text-white/80 max-w-2xl mx-auto font-pixels">
             Exploring the intersection of design and technology. Browse my latest projects and experiments.
           </p>
         </div>
@@ -90,10 +90,10 @@ const initThree = () => {
       u_resolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
       u_mouse: { value: new THREE.Vector2(0.5, 0.5) },
       u_mouseIntensity: { value: 0.0 },
-      u_color1: { value: new THREE.Color('#B721FF') },  // Bright purple
-      u_color2: { value: new THREE.Color('#9333EA') },  // Vibrant purple
-      u_color3: { value: new THREE.Color('#7E22CE') },  // Rich purple
-      u_color4: { value: new THREE.Color('#6B21A8') }   // Deep purple
+      u_color1: { value: new THREE.Color('#B721FF') },  // Original
+      u_color2: { value: new THREE.Color('#9333EA') },  // Original
+      u_color3: { value: new THREE.Color('#7E22CE') },  // Original
+      u_color4: { value: new THREE.Color('#581C87') }   // Slightly darker purple for more contrast
     };
     
     const fragmentShader = `
@@ -109,21 +109,22 @@ const initThree = () => {
       varying vec2 vUv;
       
       void main() {
-        // Create animated gradient with faster movement and mouse interaction
         float distanceFromMouse = length(vUv - u_mouse);
         float mouseEffect = (1.0 - distanceFromMouse) * u_mouseIntensity;
         
-        float noise = sin(vUv.x * 8.0 + u_time + mouseEffect * 5.0) * 0.1 + 
-                     cos(vUv.y * 6.0 + u_time * 1.2 + mouseEffect * 5.0) * 0.1;
+        // Slightly increased noise pattern
+        float noise = sin(vUv.x * 10.0 + u_time + mouseEffect * 5.0) * 0.12 + 
+                     cos(vUv.y * 8.0 + u_time * 1.2 + mouseEffect * 5.0) * 0.12;
         
-        // Base gradient from top-left to bottom-right with mouse influence
+        // Slightly more movement
         vec2 gradPos = vUv + vec2(
-          sin(u_time * 0.3 + mouseEffect) * 0.1, 
-          cos(u_time * 0.4 + mouseEffect) * 0.1
+          sin(u_time * 0.3 + mouseEffect) * 0.15, 
+          cos(u_time * 0.4 + mouseEffect) * 0.15
         );
+        
         float gradVal = (gradPos.x + gradPos.y) * 0.5 + noise;
         
-        // Mix colors based on gradient value
+        // Sharper color transitions
         vec3 color;
         if (gradVal < 0.33) {
           color = mix(u_color1, u_color2, smoothstep(0.0, 0.33, gradVal));
@@ -132,6 +133,10 @@ const initThree = () => {
         } else {
           color = mix(u_color3, u_color4, smoothstep(0.66, 1.0, gradVal));
         }
+        
+        // Add subtle pulsing effect
+        float pulse = sin(u_time * 2.0) * 0.1 + 0.9;
+        color *= pulse;
         
         gl_FragColor = vec4(color, 1.0);
       }
@@ -170,7 +175,7 @@ const initThree = () => {
 
 // Animation loop
 const animate = () => {
-  uniforms.u_time.value += 0.015;
+  uniforms.u_time.value += 0.02; // Increased from 0.015
   
   renderer.render(scene, camera);
   animationFrameId = requestAnimationFrame(animate);
@@ -195,7 +200,7 @@ const onMouseMove = (event) => {
   const y = 1.0 - (event.clientY / window.innerHeight);
   
   uniforms.u_mouse.value.set(x, y);
-  uniforms.u_mouseIntensity.value = 0.5;
+  uniforms.u_mouseIntensity.value = 0.6; // Increased from 0.5
 };
 
 // Handle mouse leave
@@ -231,40 +236,18 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-/* Add Font Face Rules */
-@font-face {
-  font-family: 'Rolest';
-  src: url('/fonts/Rolest.otf') format('opentype'),
-       url('/fonts/Rolest.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik+80s+Fade&family=Rubik+Pixels&display=swap');
 
-@font-face {
-  font-family: 'HK Grotesk Wide';
-  src: url('/fonts/HKGroteskWide-Light.otf') format('opentype');
-  font-weight: 300;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'HK Grotesk Wide';
-  src: url('/fonts/HKGroteskWide-Regular.otf') format('opentype');
+/* Font family utilities */
+.font-pixels {
+  font-family: "Rubik Pixels", system-ui;
   font-weight: 400;
   font-style: normal;
 }
 
-@font-face {
-  font-family: 'HK Grotesk Wide';
-  src: url('/fonts/HKGroteskWide-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: 'HK Grotesk Wide';
-  src: url('/fonts/HKGroteskWide-SemiBold.otf') format('opentype');
-  font-weight: 600;
+.font-fade {
+  font-family: "Rubik 80s Fade", system-ui;
+  font-weight: 400;
   font-style: normal;
 }
 
@@ -280,27 +263,24 @@ onUnmounted(() => {
   font-family: 'HK Grotesk Wide', sans-serif; 
 }
 
-/* Apply Specific Fonts and Weights */
-h3 {
-  font-family: 'HK Grotesk Wide', sans-serif;
-  font-weight: 300; /* Light */
-  letter-spacing: 0.1em;
-}
 
 h1 {
-  font-family: 'Rolest', serif;
-  font-weight: normal;
+  font-family: "Rubik Pixels", system-ui;
+  font-weight: 400;
+  font-style: normal;
   letter-spacing: 0.02em;
+  font-size: clamp(5rem, 15vw, 25rem); /* Much bigger, responsive size */
+  line-height: 0.9; /* Tighter line height for big text */
 }
 
+
 p {
-  font-family: 'HK Grotesk Wide', sans-serif;
-  font-weight: 400; /* Regular */
+  font-size: 1.25rem; /* Adjusted for readability with FD Beast */
+  line-height: 1.4;
 }
 
 button {
-  font-family: 'HK Grotesk Wide', sans-serif;
-  font-weight: 600; /* SemiBold */
+  font-size: 1rem;
 }
 
 .hero-section__background {
@@ -356,5 +336,14 @@ h1 span:nth-child(2) {
   h1 span {
     margin-bottom: 0.5rem;
   }
+}
+
+/* Adjust spacing for bigger titles */
+.mb-8 {
+  margin-bottom: 3rem; /* More spacing for larger text */
+}
+
+.mb-12 {
+  margin-bottom: 4rem;
 }
 </style> 
